@@ -1,0 +1,18 @@
+.nav {
+  display: block;
+  background-color: darkcyan;
+  width: 240px;
+  height: 700px;
+  margin-right: 20px;
+}
+
+.menu {
+  cursor: pointer;
+}
+
+.item {
+  text-decoration: none;
+  font-size: 25px;
+  color: beige;
+  margin: 20px 10px;
+}
