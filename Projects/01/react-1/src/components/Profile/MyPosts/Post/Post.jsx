@@ -1,15 +1,15 @@
 import s from "./Post.module.css";
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className={s.item}>
       <img
         className={s.avatar}
         src="https://vjoy.cc/wp-content/uploads/2020/12/1133ea1de4e69bd760056f2c04e90920.png"
       ></img>
-      Hey, why nobody love me?
+      {props.message}
       <div>
-        <span>like</span>
+        <span>{props.like} like</span>
       </div>
     </div>
   );

@@ -16,11 +16,8 @@ const Profile = () => {
       </div>
       <MyPosts />
       <div className={s.posts}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message="Hi, how are you?" like="300" />
+        <Post message="I'm fine!" like="350" />
       </div>
     </content>
   );
