@@ -4,7 +4,7 @@ import s from "./Profile.module.css";
 
 const Profile = () => {
   return (
-    <content className={s.content}>
+    <div>
       <div className={s.bg_top}></div>
       <img className={s.avatar} src="https://a.d-cd.net/7f09b9s-480.jpg"></img>
       <div className={s.about_user}>
@@ -19,7 +19,7 @@ const Profile = () => {
         <Post message="Hi, how are you?" like="300" />
         <Post message="I'm fine!" like="350" />
       </div>
-    </content>
+    </div>
   );
 };
 
