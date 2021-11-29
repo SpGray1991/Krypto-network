@@ -10,12 +10,9 @@ const Container = () => {
       <Navbar />
       <content className={s.content}>
         <Routes>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/dialogs" element={<Dialogs />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/dialogs/*" element={<Dialogs />} />
         </Routes>
-
-        {/*  <Route path='/dialogs' component={Dialogs}/>
-      <Route path='/profile' component={Profile}/> */}
       </content>
     </container>
   );

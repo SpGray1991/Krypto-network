@@ -1,24 +1,25 @@
 import MyPosts from "./MyPosts/MyPosts";
 import Post from "./MyPosts/Post/Post";
 import s from "./Profile.module.css";
+import ProfileUser from "./ProfileUser/ProfileUser";
 
 const Profile = () => {
+  let posts = [
+    { id: 1, message: "Hi", like: 300 },
+    { id: 2, message: "How are you?", like: 350 },
+    { id: 3, message: "i'm fine!" },
+    { id: 4, message: "" },
+  ];
+
+  let postsElements = posts.map((p) => (
+    <Post message={p.message} like={p.like} />
+  ));
+
   return (
     <div>
-      <div className={s.bg_top}></div>
-      <img className={s.avatar} src="https://a.d-cd.net/7f09b9s-480.jpg"></img>
-      <div className={s.about_user}>
-        <h1 className={s.title}>Sergey Spitsa</h1>
-        <p>Date of birthday: 18 july </p>
-        <p>City: Zaporizhzhia </p>
-        <p>Education: ZNTU </p>
-        <p>Web-site: https://kinopoisk.ru </p>
-      </div>
+      <ProfileUser />
       <MyPosts />
-      <div className={s.posts}>
-        <Post message="Hi, how are you?" like="300" />
-        <Post message="I'm fine!" like="350" />
-      </div>
+      <div className={s.posts}>{postsElements}</div>
     </div>
   );
 };

@@ -10,9 +10,13 @@
   cursor: pointer;
 }
 
-.item {
+.item a {
   text-decoration: none;
   font-size: 25px;
   color: beige;
   margin: 20px 10px;
+}
+
+.item .active {
+  color: red;
 }
