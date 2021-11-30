@@ -9,16 +9,3 @@
 .dialog_items {
   width: 300px;
 }
-
-.item {
-  display: block;
-  margin: 10px;
-  text-align: center;
-  background-color: darkslategray;
-}
-
-.item a {
-  text-decoration: none;
-  font-size: 15px;
-  color: cornflowerblue;
-}
