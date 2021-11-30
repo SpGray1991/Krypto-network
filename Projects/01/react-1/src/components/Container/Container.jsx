@@ -4,14 +4,19 @@ import Dialogs from "../Dialogs/Dialogs";
 import s from "../Container/Container.module.css";
 import { Routes, Route } from "react-router-dom";
 
-const Container = () => {
+const Container = (props) => {
   return (
     <container className={s.container}>
       <Navbar />
       <content className={s.content}>
         <Routes>
-          <Route path="/profile/*" element={<Profile />} />
-          <Route path="/dialogs/*" element={<Dialogs />} />
+          <Route path="/profile/*" element={<Profile posts={props.posts} />} />
+          <Route
+            path="/dialogs/*"
+            element={
+              <Dialogs dialogs={props.dialogs} messages={props.messages} />
+            }
+          />
         </Routes>
       </content>
     </container>
