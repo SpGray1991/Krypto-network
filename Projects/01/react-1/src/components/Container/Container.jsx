@@ -7,24 +7,16 @@ import { Routes, Route } from "react-router-dom";
 const Container = (props) => {
   return (
     <container className={s.container}>
-      <Navbar />
+      <Navbar state={props.state.dialogPage} />
       <content className={s.content}>
         <Routes>
           <Route
             path="/profile/*"
-            element={
-              <Profile
-                /* posts={props.posts} */ state={props.state.profilePage}
-              />
-            }
+            element={<Profile state={props.state.profilePage} />}
           />
           <Route
             path="/dialogs/*"
-            element={
-              <Dialogs /* dialogs={props.dialogs} messages={props.messages} */
-                state={props.state.dialogPage}
-              />
-            }
+            element={<Dialogs state={props.state.dialogPage} />}
           />
         </Routes>
       </content>
