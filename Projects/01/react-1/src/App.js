@@ -9,9 +9,10 @@ const App = (props) => {
       <div className="app-wrapper">
         <Header />
         <Container
-          posts={props.posts}
+          state={props.state}
+          /* posts={props.posts}
           dialogs={props.dialogs}
-          messages={props.messages}
+          messages={props.messages} */
         />
       </div>
     </BrowserRouter>
