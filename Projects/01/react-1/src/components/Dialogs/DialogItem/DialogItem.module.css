@@ -10,3 +10,10 @@
   font-size: 15px;
   color: cornflowerblue;
 }
+
+.avatar {
+  display: block;
+  width: 50px;
+  max-width: 100%;
+  height: auto;
+}
