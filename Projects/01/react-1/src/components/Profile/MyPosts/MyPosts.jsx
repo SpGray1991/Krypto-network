@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -6,14 +7,27 @@ const MyPosts = (props) => {
     <Post message={p.message} like={p.like} />
   ));
 
+  let newPostElement = React.useRef();
+
+  let addPost = () => {
+    debugger;
+    let text = newPostElement.current.value;
+    props.addPost(text);
+    newPostElement.current.value = "";
+  };
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label className={s.post} for="content">
           My posts
         </label>
-        <textarea></textarea>
-        <button className={s.btn} type="submit">
+        <textarea ref={newPostElement}></textarea>
+        <button onClick={addPost} className={s.btn} type="submit">
           Add post
         </button>
       </form>
