@@ -10,14 +10,22 @@ const MyPosts = (props) => {
   let newPostElement = React.useRef();
 
   let addPost = () => {
-    debugger;
     let text = newPostElement.current.value;
     props.addPost(text);
-    newPostElement.current.value = "";
+    props.updateNewPostText("");
   };
 
   let handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  /* const onPostChange = (event) => {
+    props.updateNewPostText(event.target.value);
+  }; */
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
   };
 
   return (
@@ -26,7 +34,11 @@ const MyPosts = (props) => {
         <label className={s.post} for="content">
           My posts
         </label>
-        <textarea ref={newPostElement}></textarea>
+        <textarea
+          onChange={onPostChange}
+          value={props.postText}
+          ref={newPostElement}
+        ></textarea>
         <button onClick={addPost} className={s.btn} type="submit">
           Add post
         </button>

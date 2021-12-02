@@ -8,7 +8,11 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Container state={props.state} addPost={props.addPost} />
+        <Container
+          state={props.state}
+          addPost={props.addPost}
+          updateNewPostText={props.updateNewPostText}
+        />
       </div>
     </BrowserRouter>
   );
