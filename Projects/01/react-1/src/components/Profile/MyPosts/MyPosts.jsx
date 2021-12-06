@@ -10,9 +10,9 @@ const MyPosts = (props) => {
   let newPostElement = React.useRef();
 
   let addPost = () => {
-    let text = newPostElement.current.value;
-    props.addPost(text);
-    props.updateNewPostText("");
+    /* let text = newPostElement.current.value; */
+    props.addPost(/* text */);
+    /*  props.updateNewPostText(""); */
   };
 
   let handleSubmit = (e) => {

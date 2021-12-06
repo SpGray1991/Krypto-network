@@ -8,7 +8,7 @@ let state = {
       { id: 3, message: "i'm fine!" },
       { id: 4, message: "" },
     ],
-    newPostText: "HiFi",
+    newPostText: "",
   },
   dialogPage: {
     dialogs: [
