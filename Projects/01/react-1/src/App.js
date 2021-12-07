@@ -7,11 +7,7 @@ const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Container
-        state={props.state}
-        addPost={props.addPost}
-        updateNewPostText={props.updateNewPostText}
-      />
+      <Container state={props.state} dispatch={props.dispatch} />
     </div>
   );
 };

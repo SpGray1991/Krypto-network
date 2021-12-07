@@ -10,22 +10,16 @@ const MyPosts = (props) => {
   let newPostElement = React.useRef();
 
   let addPost = () => {
-    /* let text = newPostElement.current.value; */
-    props.addPost(/* text */);
-    /*  props.updateNewPostText(""); */
+    props.dispatch({ type: "ADD-POST" });
   };
 
   let handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  /* const onPostChange = (event) => {
-    props.updateNewPostText(event.target.value);
-  }; */
-
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
   };
 
   return (
