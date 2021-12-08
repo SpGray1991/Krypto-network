@@ -21,7 +21,13 @@ const Container = (props) => {
           />
           <Route
             path="/dialogs/*"
-            element={<Dialogs state={props.state.dialogPage} />}
+            element={
+              <Dialogs
+                state={props.state.dialogPage}
+                dispatch={props.dispatch}
+                state2={props.state.profilePage}
+              />
+            }
           />
         </Routes>
       </content>

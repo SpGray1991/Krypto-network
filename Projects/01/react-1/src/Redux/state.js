@@ -2,6 +2,10 @@ const ADD_POST = "ADD-POST";
 
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY ";
+
+const ADD_MESSAGE = "ADD-MESSAGE";
+
 let store = {
   _callSubscriber() {
     console.log("State changed");
@@ -32,6 +36,7 @@ let store = {
         { id: 3, message: "i'm fine!" },
         { id: 4, message: "Ok" },
       ],
+      newMessageBody: "",
     },
   },
   getState() {
@@ -54,6 +59,18 @@ let store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
+    } else if (action.type === ADD_MESSAGE) {
+      let newMessage = {
+        id: 5,
+        message: this._state.dialogPage.newMessageBody,
+      };
+
+      this._state.dialogPage.messages.push(newMessage);
+      this._state.dialogPage.newMessage = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogPage.newMessageBody = action.newText;
+      this._callSubscriber(this._state);
     }
   },
 };
@@ -64,6 +81,14 @@ export const addPostActionCreator = () => {
 
 export const updateNewPostTextActionCreator = (text) => {
   return { type: UPDATE_NEW_POST_TEXT, newText: text };
+};
+
+export const addMessageActionCreator = () => {
+  return { type: ADD_MESSAGE };
+};
+
+export const updateNewMessageBodyActionCreator = (text) => {
+  return { type: UPDATE_NEW_MESSAGE_BODY, newText: text };
 };
 
 export default store;
