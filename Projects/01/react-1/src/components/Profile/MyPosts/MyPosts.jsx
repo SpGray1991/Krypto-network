@@ -1,21 +1,16 @@
 import React from "react";
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../Redux/profile-reducer";
-
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-  let postsElements = props.state.map((p) => (
+  let postsElements = props.posts.map((p) => (
     <Post message={p.message} like={p.like} />
   ));
 
   let newPostElement = React.useRef();
 
-  let addPost = () => {
-    props.dispatch(addPostActionCreator());
+  let onAddPost = () => {
+    props.addPost();
   };
 
   let handleSubmit = (e) => {
@@ -24,7 +19,7 @@ const MyPosts = (props) => {
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextActionCreator(text));
+    props.updateNewPostText(text);
   };
 
   return (
@@ -38,7 +33,7 @@ const MyPosts = (props) => {
           value={props.postText}
           ref={newPostElement}
         ></textarea>
-        <button onClick={addPost} className={s.btn} type="submit">
+        <button onClick={onAddPost} className={s.btn} type="submit">
           Add post
         </button>
       </form>

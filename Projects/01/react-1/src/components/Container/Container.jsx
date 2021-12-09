@@ -14,7 +14,8 @@ const Container = (props) => {
             path="/profile/*"
             element={
               <Profile
-                state={props.state.profilePage}
+                store={props.store}
+                /* state={props.state.profilePage} */
                 dispatch={props.dispatch}
               />
             }
