@@ -30,7 +30,7 @@ const dialogReducer = (state = initialState, action) => {
       };
 
       state.messages.push(newMessage);
-      state.newMessage = "";
+      state.newMessageBody = "";
       return state;
     case UPDATE_NEW_MESSAGE_BODY:
       state.newMessageBody = action.newText;

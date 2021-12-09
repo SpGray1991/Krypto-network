@@ -16,7 +16,6 @@ const Container = (props) => {
               <Profile
                 store={props.store}
                 /* state={props.state.profilePage} */
-                dispatch={props.dispatch}
               />
             }
           />
@@ -24,9 +23,9 @@ const Container = (props) => {
             path="/dialogs/*"
             element={
               <Dialogs
+                /* store={props.store} */
                 state={props.state.dialogPage}
                 dispatch={props.dispatch}
-                state2={props.state.profilePage}
               />
             }
           />
