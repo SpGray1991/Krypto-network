@@ -10,25 +10,8 @@ const Container = (props) => {
       <Navbar state={props.state.dialogPage} />
       <content className={s.content}>
         <Routes>
-          <Route
-            path="/profile/*"
-            element={
-              <Profile
-                store={props.store}
-                /* state={props.state.profilePage} */
-              />
-            }
-          />
-          <Route
-            path="/dialogs/*"
-            element={
-              <Dialogs
-                /* store={props.store} */
-                state={props.state.dialogPage}
-                dispatch={props.dispatch}
-              />
-            }
-          />
+          <Route path="/profile/*" element={<Profile store={props.store} />} />
+          <Route path="/dialogs/*" element={<Dialogs store={props.store} />} />
         </Routes>
       </content>
     </container>
