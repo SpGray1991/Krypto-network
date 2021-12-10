@@ -8,8 +8,8 @@ const Profile = (props) => {
     <div>
       <ProfileUser />
       <MyPostsContainer
-        store={props.store}
-        /* posts={props.state.posts}
+      /* store={props.store} */
+      /* posts={props.state.posts}
         postText={props.state.newPostText}
         dispatch={props.dispatch} */
       />

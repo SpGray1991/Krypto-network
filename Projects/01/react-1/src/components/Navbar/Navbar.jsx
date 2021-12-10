@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import DialogItem from "../Dialogs/DialogItem/DialogItem";
 import s from "./Navbar.module.css";
-
+debugger;
 const Navbar = (props) => {
-  let dialogsElements = props.state.dialogs.map((d) => (
+  let dialogsElements = props.dialogPage.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 

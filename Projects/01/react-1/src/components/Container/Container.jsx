@@ -1,20 +1,23 @@
-import Navbar from "../Navbar/Navbar";
 import Profile from "../Profile/Profile";
 
 import s from "../Container/Container.module.css";
 import { Routes, Route } from "react-router-dom";
 import DialogsContainer from "../Dialogs/DialogsContainer";
+import NavbarContainer from "../Navbar/NavbarContainer";
 
-const Container = (props) => {
+const Container = () => {
   return (
     <container className={s.container}>
-      <Navbar state={props.state.dialogPage} />
+      <NavbarContainer /* state={props.state.dialogPage} */ />
       <content className={s.content}>
         <Routes>
-          <Route path="/profile/*" element={<Profile store={props.store} />} />
+          <Route
+            path="/profile/*"
+            element={<Profile /* store={props.store} */ />}
+          />
           <Route
             path="/dialogs/*"
-            element={<DialogsContainer store={props.store} />}
+            element={<DialogsContainer /* store={props.store} */ />}
           />
         </Routes>
       </content>

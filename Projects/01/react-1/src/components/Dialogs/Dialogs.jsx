@@ -4,11 +4,13 @@ import Message from "./Message/Message";
 import React from "react";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.dialogs.map((d) => (
+  let state = props.dialogPage;
+
+  let dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.messages.map((e) => (
+  let messagesElements = state.messages.map((e) => (
     <Message message={e.message} />
   ));
 
@@ -39,7 +41,7 @@ const Dialogs = (props) => {
             </label>
             <textarea
               onChange={onMessageChange}
-              value={props.newMessageBody}
+              value={state.newMessageBody}
               ref={newMessageElement}
             ></textarea>
             <button onClick={onAddMessage} className={s.btn} type="submit">
