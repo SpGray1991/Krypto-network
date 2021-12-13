@@ -1,8 +1,18 @@
+import axios from "axios";
 import React from "react";
 import s from "./Users.module.css";
+import usersPhoto from "../../Img/images.jpg";
 
 let Users = (props) => {
   if (props.users.length === 0) {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
+  }
+
+  /* if (props.users.length === 0) {
     props.setUsers([
       {
         id: 1,
@@ -30,15 +40,18 @@ let Users = (props) => {
         location: { city: "Zaporizhzhia", country: "Ukraine" },
       },
     ]);
-  }
+  } */
 
   return (
     <div>
       {props.users.map((u) => (
         <div className={s.user} key={u.id}>
           <div>
-            <img className={s.avatar} src={u.photoUrl}></img>
-            {u.follow ? (
+            <img
+              className={s.avatar}
+              src={u.photos.small != null ? u.photos.small : usersPhoto}
+            ></img>
+            {u.followed ? (
               <button
                 onClick={() => {
                   props.unfollow(u.id);
@@ -57,14 +70,14 @@ let Users = (props) => {
             )}
           </div>
           <span>
-            <div>{u.fullName}</div>
+            <div>{u.name}</div>
             <div>{u.status}</div>
           </span>
 
           <div>
-            <div>{u.location.country}</div>
+            <div>{"u.location.country"}</div>
 
-            <div>{u.location.city}</div>
+            <div>{"u.location.city"}</div>
           </div>
         </div>
       ))}
