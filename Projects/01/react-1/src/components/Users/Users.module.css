@@ -12,3 +12,11 @@
 .button {
   display: block;
 }
+
+.page {
+  cursor: pointer;
+}
+
+.selectedPage {
+  font-weight: bold;
+}
