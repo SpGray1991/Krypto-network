@@ -1,16 +1,26 @@
 import s from "./ProfileUser.module.css";
+import usersPhoto from "../../../Img/images.jpg";
+import Preloader from "../../Users/Preloader/Preloader";
 
-const ProfileUser = () => {
+const ProfileUser = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <>
       <div className={s.bg_top}></div>
-      <img className={s.avatar} src="https://a.d-cd.net/7f09b9s-480.jpg"></img>
+      <img className={s.avatar} src={props.profile.photos.small} />
       <div className={s.about_user}>
-        <h1 className={s.title}>Sergey Spitsa</h1>
+        <h1 className={s.title}>
+          {props.profile.fullName} {props.profile.aboutMe}
+        </h1>
         <p>Date of birthday: 18 july </p>
         <p>City: Zaporizhzhia </p>
         <p>Education: ZNTU </p>
-        <p>Web-site: https://kinopoisk.ru </p>
+        <p>
+          Web-site:
+          {props.profile.contacts.facebook}
+        </p>
       </div>
     </>
   );

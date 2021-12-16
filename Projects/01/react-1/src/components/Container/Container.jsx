@@ -1,10 +1,9 @@
-import Profile from "../Profile/Profile";
-
 import s from "../Container/Container.module.css";
 import { Routes, Route } from "react-router-dom";
 import DialogsContainer from "../Dialogs/DialogsContainer";
 import NavbarContainer from "../Navbar/NavbarContainer";
 import UsersContainer from "../Users/UsersContainer";
+import ProfileContainer from "../Profile/ProfileContainer";
 
 const Container = () => {
   return (
@@ -12,7 +11,7 @@ const Container = () => {
       <NavbarContainer />
       <content className={s.content}>
         <Routes>
-          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/profile/*" element={<ProfileContainer />} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/users/*" element={<UsersContainer />} />
         </Routes>
