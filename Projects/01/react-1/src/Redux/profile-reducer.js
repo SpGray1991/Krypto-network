@@ -37,7 +37,6 @@ const profileReducer = (state = initialState, action) => {
       };
 
     case SET_USER_PROFILE:
-      console.log("SET_USER_PROFILE", state, action.profile);
       return { ...state, profile: action.profile };
 
     default:
@@ -54,7 +53,6 @@ export const updateNewPostTextActionCreator = (text) => {
 };
 
 export const setUserProfile = (profile) => {
-  console.log(profile);
   return { type: SET_USER_PROFILE, profile };
 };
 
