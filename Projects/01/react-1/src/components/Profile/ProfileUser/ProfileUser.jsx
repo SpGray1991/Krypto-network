@@ -1,6 +1,6 @@
 import s from "./ProfileUser.module.css";
-import usersPhoto from "../../../Img/images.jpg";
 import Preloader from "../../Users/Preloader/Preloader";
+import usersPhoto from "../../../Img/images.jpg";
 
 const ProfileUser = (props) => {
   if (!props.profile) {
@@ -9,7 +9,14 @@ const ProfileUser = (props) => {
   return (
     <>
       <div className={s.bg_top}></div>
-      <img className={s.avatar} src={props.profile.photos.small} />
+      <img
+        className={s.avatar}
+        src={
+          props.profile.photos.small != null
+            ? props.profile.photos.small
+            : usersPhoto
+        }
+      />
       <div className={s.about_user}>
         <h1 className={s.title}>
           {props.profile.fullName} {props.profile.aboutMe}
