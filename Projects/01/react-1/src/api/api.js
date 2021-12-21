@@ -27,4 +27,9 @@ export const userAPI = {
       return response.data;
     });
   },
+  getUserId(userId) {
+    return instance.get(`profile/` + userId).then((response) => {
+      return response.data;
+    });
+  },
 };
