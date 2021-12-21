@@ -1,11 +1,12 @@
 import "./App.css";
-import Header from "./components/Header/Header";
+
 import Container from "./components/Container/Container";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Header />
+      <HeaderContainer />
       <Container
       /* state={props.state}
         dispatch={props.dispatch}
