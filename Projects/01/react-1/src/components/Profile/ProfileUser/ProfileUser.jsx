@@ -6,6 +6,7 @@ const ProfileUser = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
+
   return (
     <>
       <div className={s.bg_top}></div>
