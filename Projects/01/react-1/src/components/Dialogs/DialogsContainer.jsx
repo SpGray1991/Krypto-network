@@ -8,7 +8,6 @@ let AuthRedirectComponent = withAuthRedirect(Dialogs);
 let mapStateToProps = (state) => {
   return {
     dialogPage: state.dialogPage,
-    isAuth: state.auth.isAuth,
   };
 };
 
