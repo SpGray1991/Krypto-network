@@ -19,7 +19,7 @@ const ProfileUser = (props) => {
             : usersPhoto
         }
       />
-      <ProfileStatus status={"Hello!"} />
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
       <div className={s.about_user}>
         <h1 className={s.title}>
           {props.profile.fullName} {props.profile.aboutMe}

@@ -38,3 +38,14 @@ export const userAPI = {
     });
   },
 };
+
+export const userProfileAPI = {
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId);
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status });
+    /* .then((response) => {
+      return response.data; */
+  },
+};

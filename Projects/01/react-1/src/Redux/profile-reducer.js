@@ -1,10 +1,12 @@
-import { userAPI } from "../api/api";
+import { userAPI, userProfileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
 
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 const SET_USER_PROFILE = "SET_USER_PROFILE ";
+
+const SET_USER_STATUS = "SET_USER_STATUS";
 
 let initialState = {
   posts: [
@@ -15,6 +17,7 @@ let initialState = {
   ],
   newPostText: "",
   profile: null,
+  status: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -41,6 +44,9 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
 
+    case SET_USER_STATUS:
+      return { ...state, status: action.status };
+
     default:
       return state;
   }
@@ -58,6 +64,10 @@ export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile };
 };
 
+export const setUserStatus = (status) => {
+  return { type: SET_USER_STATUS, status };
+};
+
 export const getUserId = (match) => {
   return (dispatch) => {
     let userId = match && match.params && match.params.userId;
@@ -68,6 +78,28 @@ export const getUserId = (match) => {
 
     userAPI.getUserId(userId).then((data) => {
       dispatch(setUserProfile(data));
+    });
+  };
+};
+
+export const getUserStatus = (match) => {
+  return (dispatch) => {
+    let userId = match && match.params && match.params.userId;
+
+    if (!userId) {
+      userId = 21326;
+    }
+
+    userProfileAPI.getStatus(userId).then((response) => {
+      dispatch(setUserStatus(response.data));
+    });
+  };
+};
+
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    userProfileAPI.updateStatus(status).then((response) => {
+      if (response.data.resultCode === 0) dispatch(setUserStatus(status));
     });
   };
 };
