@@ -3,6 +3,7 @@ import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { Formik } from "formik";
 
 const Dialogs = (props) => {
   let state = props.dialogPage;
@@ -15,20 +16,9 @@ const Dialogs = (props) => {
     <Message message={e.message} />
   ));
 
-  let onAddMessage = () => {
-    props.addMessage();
+  let onAddMessage = (values) => {
+    props.addMessage(values.name);
   };
-
-  let handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  let onMessageChange = () => {
-    let text = newMessageElement.current.value;
-    props.updateNewMessageBody(text);
-  };
-
-  let newMessageElement = React.useRef();
 
   if (!props.isAuth) {
     return <Navigate to="/login/" />;
@@ -40,21 +30,40 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         <div>{messagesElements}</div>
         <div>
-          <form onSubmit={handleSubmit}>
-            <label className={s.post} for="content">
+          <AddMessageForm onAddMessage={onAddMessage} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const AddMessageForm = (props) => {
+  return (
+    <div>
+      <Formik
+        initialValues={{ name: "" }}
+        onSubmit={(values) => {
+          props.onAddMessage(values);
+        }}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <div>
+            <label className={s.post} htmlFor="name">
               My messages
             </label>
             <textarea
-              onChange={onMessageChange}
-              value={state.newMessageBody}
-              ref={newMessageElement}
+              type={"text"}
+              name={"name"}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
             ></textarea>
-            <button onClick={onAddMessage} className={s.btn} type="submit">
-              Add message
+            <button onClick={handleSubmit} className={s.btn} type={"submit"}>
+              Add messages
             </button>
-          </form>
-        </div>
-      </div>
+          </div>
+        )}
+      </Formik>
     </div>
   );
 };

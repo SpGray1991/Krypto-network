@@ -19,7 +19,7 @@ export default DialogsContainer; */
 
 export default compose(
   connect(mapStateToProps, {
-    updateNewMessageBody,
+    /* updateNewMessageBody, */
     addMessage,
   }),
   withAuthRedirect
