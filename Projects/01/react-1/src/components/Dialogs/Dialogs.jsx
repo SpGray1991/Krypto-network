@@ -16,9 +16,9 @@ const Dialogs = (props) => {
     <Message message={e.message} />
   ));
 
-  let onAddMessage = (values) => {
+  /*  let onAddMessage = (values) => {
     props.addMessage(values.name);
-  };
+  }; */
 
   if (!props.isAuth) {
     return <Navigate to="/login/" />;
@@ -30,7 +30,7 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         <div>{messagesElements}</div>
         <div>
-          <AddMessageForm onAddMessage={onAddMessage} />
+          <AddMessageForm addMessage={props.addMessage} />
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@ const AddMessageForm = (props) => {
       <Formik
         initialValues={{ name: "" }}
         onSubmit={(values) => {
-          props.onAddMessage(values);
+          props.addMessage(values.name);
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (

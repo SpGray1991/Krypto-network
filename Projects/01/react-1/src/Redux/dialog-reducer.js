@@ -18,7 +18,7 @@ let initialState = {
     { id: 3, message: "i'm fine!" },
     { id: 4, message: "Ok" },
   ],
-  newMessageBody: "",
+  /*  newMessageBody: "", */
 };
 
 const dialogReducer = (state = initialState, action) => {
@@ -31,7 +31,7 @@ const dialogReducer = (state = initialState, action) => {
       return {
         ...state,
         messages: [...state.messages, newMessage],
-        newMessageBody: "",
+        /* newMessageBody: "", */
       };
 
     /* case UPDATE_NEW_MESSAGE_BODY:
