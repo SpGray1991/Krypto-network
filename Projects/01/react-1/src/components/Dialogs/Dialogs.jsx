@@ -16,10 +16,6 @@ const Dialogs = (props) => {
     <Message message={e.message} />
   ));
 
-  /*  let onAddMessage = (values) => {
-    props.addMessage(values.name);
-  }; */
-
   if (!props.isAuth) {
     return <Navigate to="/login/" />;
   }
