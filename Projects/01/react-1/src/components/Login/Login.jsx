@@ -6,6 +6,7 @@ import {
   logoutThunkCreator,
 } from "../../Redux/auth-reducer";
 import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = (props) => {
   const validationSchema = yup.object().shape({
@@ -94,15 +95,23 @@ const LoginForm = (props) => {
 };
 
 const Login = (props) => {
+  if (props.isAuth) {
+    return <Navigate to="/profile/" />;
+  }
   return (
     <div>
       <h1>LOGIN</h1>
-      <LoginForm
-        login={props.loginThunkCreator}
-        logout={props.logoutThunkCreator}
-      />
+      <LoginForm login={props.loginThunkCreator} />
     </div>
   );
 };
 
-export default connect(null, { loginThunkCreator, logoutThunkCreator })(Login);
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.isAuth,
+  };
+};
+
+export default connect(mapStateToProps, {
+  loginThunkCreator,
+})(Login);

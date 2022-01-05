@@ -7,7 +7,9 @@ const Header = (props) => {
       <img src="https://www.logo.wine/a/logo/Bitcoin/Bitcoin-Logo.wine.svg"></img>
       <div>
         {props.isAuth ? (
-          props.login
+          <div>
+            {props.login} - <button onClick={props.logout}>Log Out</button>
+          </div>
         ) : (
           <NavLink
             to="/login"
