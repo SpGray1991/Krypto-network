@@ -1,6 +1,11 @@
 import { Formik, Field } from "formik";
 import * as yup from "yup";
 import s from "./Login.module.css";
+import {
+  loginThunkCreator,
+  logoutThunkCreator,
+} from "../../Redux/auth-reducer";
+import { connect } from "react-redux";
 
 const LoginForm = (props) => {
   const validationSchema = yup.object().shape({
@@ -25,6 +30,7 @@ const LoginForm = (props) => {
         validateOnBlur
         onSubmit={(values) => {
           console.log(values);
+          props.login(values.email, values.password, values.rememberMe);
         }}
         validationSchema={validationSchema}
       >
@@ -87,13 +93,16 @@ const LoginForm = (props) => {
   );
 };
 
-const Login = () => {
+const Login = (props) => {
   return (
     <div>
       <h1>LOGIN</h1>
-      <LoginForm />
+      <LoginForm
+        login={props.loginThunkCreator}
+        logout={props.logoutThunkCreator}
+      />
     </div>
   );
 };
 
-export default Login;
+export default connect(null, { loginThunkCreator, logoutThunkCreator })(Login);

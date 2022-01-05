@@ -1,4 +1,4 @@
-import { userAPI } from "../api/api";
+import { userAPI, loginAPI } from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
 
@@ -24,8 +24,8 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserData = (id, email, login) => {
-  return { type: SET_USER_DATA, data: { id, email, login } };
+export const setUserData = (id, email, login, isAuth) => {
+  return { type: SET_USER_DATA, data: { id, email, login, isAuth } };
 };
 
 export const getAuth = () => {
@@ -33,8 +33,25 @@ export const getAuth = () => {
     userAPI.getAuth().then((data) => {
       if (data.resultCode === 0) {
         let { id, email, login } = data.data;
-        dispatch(setUserData(id, email, login));
+        dispatch(setUserData(id, email, login, true));
       }
+    });
+  };
+};
+
+export const loginThunkCreator = (email, password, rememberMe) => {
+  return (dispatch) => {
+    loginAPI.login(email, password, rememberMe).then((response) => {
+      if (response.data.resultCode === 0) dispatch(getAuth());
+    });
+  };
+};
+
+export const logoutThunkCreator = () => {
+  return (dispatch) => {
+    loginAPI.logout().then((response) => {
+      if (response.data.resultCode === 0)
+        dispatch(setUserData(null, null, null, false));
     });
   };
 };
