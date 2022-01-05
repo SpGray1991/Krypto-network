@@ -1,10 +1,14 @@
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import * as yup from "yup";
 import s from "./Login.module.css";
 
 const LoginForm = (props) => {
   const validationSchema = yup.object().shape({
     email: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Обязательно"),
+    password: yup
       .string()
       .typeError("Должно быть строкой")
       .required("Обязательно"),
@@ -49,6 +53,25 @@ const LoginForm = (props) => {
             {touched.email && errors.email && (
               <p className={s.error}>{errors.email}</p>
             )}
+            <label className={s.post} htmlFor="password">
+              Password
+            </label>
+            <input
+              className={s.input}
+              type={"text"}
+              name={"password"}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+            ></input>
+            {touched.password && errors.password && (
+              <p className={s.error}>{errors.password}</p>
+            )}
+            <label>
+              <Field type="checkbox" name="rememberMe" />
+              Remember Me
+            </label>
+
             <button
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
