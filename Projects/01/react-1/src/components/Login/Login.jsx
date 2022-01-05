@@ -4,7 +4,7 @@ import s from "./Login.module.css";
 
 const LoginForm = (props) => {
   const validationSchema = yup.object().shape({
-    login: yup
+    email: yup
       .string()
       .typeError("Должно быть строкой")
       .required("Обязательно"),
@@ -14,7 +14,7 @@ const LoginForm = (props) => {
     <div>
       <Formik
         initialValues={{
-          login: "",
+          email: "",
           password: "",
           rememberMe: "",
         }}
@@ -35,19 +35,19 @@ const LoginForm = (props) => {
           dirty,
         }) => (
           <div>
-            <label className={s.post} htmlFor="login">
+            <label className={s.post} htmlFor="email">
               Login
             </label>
             <input
               className={s.input}
-              type={"text"}
-              name={"login"}
+              type={"email"}
+              name={"email"}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.login}
+              value={values.email}
             ></input>
-            {touched.login && errors.login && (
-              <p className={s.error}>{errors.login}</p>
+            {touched.email && errors.email && (
+              <p className={s.error}>{errors.email}</p>
             )}
             <button
               disabled={!isValid && !dirty}
