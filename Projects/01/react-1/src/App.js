@@ -1,19 +1,32 @@
+import React from "react";
+import { connect } from "react-redux";
 import "./App.css";
-
+import { initializedApp } from "./Redux/app-reducer";
 import Container from "./components/Container/Container";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Preloader from "./components/Users/Preloader/Preloader";
 
-const App = () => {
-  return (
-    <div className="app-wrapper">
-      <HeaderContainer />
-      <Container
-      /* state={props.state}
-        dispatch={props.dispatch}
-        store={props.store} */
-      />
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializedApp();
+  }
+  render() {
+    if (!this.props.initialised) {
+      return <Preloader />;
+    }
+    return (
+      <div className="app-wrapper">
+        <HeaderContainer />
+        <Container />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    initialised: state.app.initialised,
+  };
 };
 
-export default App;
+export default connect(mapStateToProps, { initializedApp })(App);

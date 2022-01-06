@@ -7,8 +7,7 @@ import {
 } from "../../Redux/profile-reducer";
 import { useMatch } from "react-router-dom";
 import Profile from "./Profile";
-import withAuthRedirect from "../../hoc/withAuthRedirect";
-/* import { compose } from "redux"; */
+
 class ProfileContainer extends React.Component {
   componentDidMount() {
     this.props.getUserId(this.props.match);
