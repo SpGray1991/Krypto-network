@@ -82,12 +82,12 @@ export const getUserId = (match) => {
   };
 };
 
-export const getUserStatus = (match) => {
+export const getUserStatus = (match, id) => {
   return (dispatch) => {
     let userId = match && match.params && match.params.userId;
 
     if (!userId) {
-      userId = 21326;
+      userId = id;
     }
 
     userProfileAPI.getStatus(userId).then((response) => {

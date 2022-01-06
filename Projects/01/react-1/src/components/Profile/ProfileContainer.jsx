@@ -12,7 +12,7 @@ import withAuthRedirect from "../../hoc/withAuthRedirect";
 class ProfileContainer extends React.Component {
   componentDidMount() {
     this.props.getUserId(this.props.match);
-    this.props.getUserStatus(this.props.match);
+    this.props.getUserStatus(this.props.match, this.props.id);
   }
 
   render() {
@@ -40,6 +40,7 @@ const ProfileURLMatch = (props) => {
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  id: state.auth.id,
 });
 
 export default connect(mapStateToProps, {
