@@ -38,10 +38,11 @@ export const getAuth = () => {
   };
 };
 
-export const loginThunkCreator = (email, password, rememberMe) => {
+export const loginThunkCreator = (email, password, rememberMe, setStatus) => {
   return (dispatch) => {
     loginAPI.login(email, password, rememberMe).then((response) => {
       if (response.data.resultCode === 0) dispatch(getAuth());
+      else setStatus(response.data.messages);
     });
   };
 };

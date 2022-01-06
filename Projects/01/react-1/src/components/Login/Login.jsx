@@ -1,10 +1,7 @@
 import { Formik, Field } from "formik";
 import * as yup from "yup";
 import s from "./Login.module.css";
-import {
-  loginThunkCreator,
-  logoutThunkCreator,
-} from "../../Redux/auth-reducer";
+import { loginThunkCreator } from "../../Redux/auth-reducer";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -29,9 +26,15 @@ const LoginForm = (props) => {
           rememberMe: "",
         }}
         validateOnBlur
-        onSubmit={(values) => {
+        onSubmit={(values, { setSubmitting, setStatus }) => {
           console.log(values);
-          props.login(values.email, values.password, values.rememberMe);
+          props.login(
+            values.email,
+            values.password,
+            values.rememberMe,
+            setStatus
+          );
+          setSubmitting(false);
         }}
         validationSchema={validationSchema}
       >
@@ -44,8 +47,10 @@ const LoginForm = (props) => {
           isValid,
           handleSubmit,
           dirty,
+          status,
         }) => (
           <div>
+            {status}
             <label className={s.post} htmlFor="email">
               Login
             </label>
@@ -78,7 +83,6 @@ const LoginForm = (props) => {
               <Field type="checkbox" name="rememberMe" />
               Remember Me
             </label>
-
             <button
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
