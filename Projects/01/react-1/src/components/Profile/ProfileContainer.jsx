@@ -7,11 +7,21 @@ import {
 } from "../../Redux/profile-reducer";
 import { useMatch } from "react-router-dom";
 import Profile from "./Profile";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    this.props.getUserId(this.props.match);
-    this.props.getUserStatus(this.props.match, this.props.id);
+    let userId =
+      this.props.match &&
+      this.props.match.params &&
+      this.props.match.params.userId;
+
+    if (!userId) {
+      userId = this.props.id;
+    }
+
+    this.props.getUserId(userId);
+    this.props.getUserStatus(userId);
   }
 
   render() {
@@ -29,11 +39,11 @@ class ProfileContainer extends React.Component {
   }
 }
 
-/* let AuthRedirectComponent = withAuthRedirect(ProfileContainer); */
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 const ProfileURLMatch = (props) => {
   const match = useMatch("/profile/:userId");
-  return <ProfileContainer {...props} match={match} />;
+  return <AuthRedirectComponent {...props} match={match} />;
 };
 
 const mapStateToProps = (state) => ({

@@ -68,13 +68,13 @@ export const setUserStatus = (status) => {
   return { type: SET_USER_STATUS, status };
 };
 
-export const getUserId = (match) => {
+export const getUserId = (userId) => {
   return (dispatch) => {
-    let userId = match && match.params && match.params.userId;
+    /* let userId = match && match.params && match.params.userId;
 
     if (!userId) {
       userId = 21326;
-    }
+    } */
 
     userAPI.getUserId(userId).then((data) => {
       dispatch(setUserProfile(data));
@@ -82,13 +82,13 @@ export const getUserId = (match) => {
   };
 };
 
-export const getUserStatus = (match, id) => {
+export const getUserStatus = (userId) => {
   return (dispatch) => {
-    let userId = match && match.params && match.params.userId;
+    /* let userId = match && match.params && match.params.userId;
 
     if (!userId) {
       userId = id;
-    }
+    } */
 
     userProfileAPI.getStatus(userId).then((response) => {
       dispatch(setUserStatus(response.data));

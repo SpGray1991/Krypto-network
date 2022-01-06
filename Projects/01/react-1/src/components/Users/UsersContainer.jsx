@@ -8,7 +8,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "./Preloader/Preloader";
-import withAuthRedirect from "../../hoc/withAuthRedirect";
+/* import withAuthRedirect from "../../hoc/withAuthRedirect"; */
 import { compose } from "redux";
 
 class UsersContainer extends React.Component {
@@ -68,6 +68,6 @@ export default compose(
     pagesChanged,
     follow,
     unfollow,
-  }),
-  withAuthRedirect
+  })
+  /*  withAuthRedirect */
 )(UsersContainer);
