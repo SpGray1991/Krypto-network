@@ -3,7 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Formik } from "formik";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
   let postsElements = props.posts.map((p) => (
     <Post message={p.message} like={p.like} /* key={p.id} */ />
   ));
@@ -42,7 +42,7 @@ const MyPosts = (props) => {
       <div className={s.posts}>{postsElements}</div>
     </>
   );
-};
+});
 
 const AddPostForm = (props) => {
   return (
