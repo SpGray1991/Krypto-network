@@ -1,5 +1,5 @@
 import s from "./ProfileUser.module.css";
-import Preloader from "../../Users/Preloader/Preloader";
+import Preloader from "../../Common/Preloader/Preloader";
 import usersPhoto from "../../../Img/images.jpg";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";

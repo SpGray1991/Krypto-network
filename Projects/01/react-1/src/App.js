@@ -4,7 +4,7 @@ import "./App.css";
 import { initializedApp } from "./Redux/app-reducer";
 import Container from "./components/Container/Container";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Preloader from "./components/Users/Preloader/Preloader";
+import Preloader from "../src/components/Common/Preloader/Preloader";
 
 class App extends React.Component {
   componentDidMount() {
