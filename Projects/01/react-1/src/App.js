@@ -5,7 +5,7 @@ import { initializedApp } from "./Redux/app-reducer";
 import Container from "./components/Container/Container";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Preloader from "../src/components/Common/Preloader/Preloader";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Redux/redux-store";
 
@@ -36,7 +36,7 @@ let AppContainer = connect(mapStateToProps, { initializedApp })(App);
 
 const SamuraiJSApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer
         /* state={state}
@@ -44,7 +44,7 @@ const SamuraiJSApp = (props) => {
           store={store} */
         />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
