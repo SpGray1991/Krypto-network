@@ -2,6 +2,7 @@ import { userAPI, userProfileAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
 const DELETE_POST = "DELETE_POST";
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 /* 
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"; */
 
@@ -19,6 +20,7 @@ let initialState = {
   /* newPostText: "", */
   profile: null,
   status: "",
+  photos: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -54,6 +56,9 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_STATUS:
       return { ...state, status: action.status };
 
+    case SAVE_PHOTO_SUCCESS:
+      return { ...state, profile: { ...state.profile, photos: action.photos } };
+
     default:
       return state;
   }
@@ -65,6 +70,10 @@ export const addPost = (name) => {
 
 export const deletePost = (postId) => {
   return { type: DELETE_POST, postId };
+};
+
+export const savePhotoSuccess = (photos) => {
+  return { type: SAVE_PHOTO_SUCCESS, photos };
 };
 
 /* export const updateNewPostTextActionCreator = (text) => {
@@ -81,12 +90,6 @@ export const setUserStatus = (status) => {
 
 export const getUserId = (userId) => {
   return (dispatch) => {
-    /* let userId = match && match.params && match.params.userId;
-
-    if (!userId) {
-      userId = 21326;
-    } */
-
     userAPI.getUserId(userId).then((data) => {
       dispatch(setUserProfile(data));
     });
@@ -95,12 +98,6 @@ export const getUserId = (userId) => {
 
 export const getUserStatus = (userId) => {
   return (dispatch) => {
-    /* let userId = match && match.params && match.params.userId;
-
-    if (!userId) {
-      userId = id;
-    } */
-
     userProfileAPI.getStatus(userId).then((response) => {
       dispatch(setUserStatus(response.data));
     });
@@ -111,6 +108,15 @@ export const updateStatus = (status) => {
   return (dispatch) => {
     userProfileAPI.updateStatus(status).then((response) => {
       if (response.data.resultCode === 0) dispatch(setUserStatus(status));
+    });
+  };
+};
+
+export const savePhoto = (file) => {
+  return (dispatch) => {
+    userProfileAPI.savePhoto(file).then((response) => {
+      if (response.data.resultCode === 0)
+        dispatch(savePhotoSuccess(response.data.data.photos));
     });
   };
 };

@@ -8,6 +8,12 @@ const ProfileUser = (props) => {
     return <Preloader />;
   }
 
+  const loadAvatar = (e) => {
+    if (e.target.files.length) {
+      props.savePhoto(e.target.files[0]);
+    }
+  };
+
   return (
     <>
       <div className={s.bg_top}></div>
@@ -19,6 +25,7 @@ const ProfileUser = (props) => {
             : usersPhoto
         }
       />
+      {props.isOwner && <input type={"file"} onChange={loadAvatar} />}
       <ProfileStatusWithHooks
         status={props.status}
         updateStatus={props.updateStatus}
