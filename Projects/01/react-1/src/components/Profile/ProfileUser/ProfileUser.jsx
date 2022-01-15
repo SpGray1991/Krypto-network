@@ -3,6 +3,8 @@ import s from "./ProfileUser.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import usersPhoto from "../../../Img/images.jpg";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import { Formik, Field } from "formik";
+import * as yup from "yup";
 
 const ProfileUser = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -32,7 +34,11 @@ const ProfileUser = (props) => {
         {props.isOwner && <input type={"file"} onChange={loadAvatar} />}
       </div>
       {editMode ? (
-        <ProfileDataForm />
+        <ProfileDataForm
+          saveProfile={props.saveProfile}
+          profile={props.profile}
+          setEditMode={setEditMode}
+        />
       ) : (
         <ProfileData
           profile={props.profile}
@@ -97,7 +103,7 @@ const ProfileData = (props) => {
 
 const ProfileDataForm = (props) => {
   /* const validationSchema = yup.object().shape({
-    email: yup
+    fullName: yup
       .string()
       .typeError("Должно быть строкой")
       .required("Обязательно"),
@@ -109,26 +115,37 @@ const ProfileDataForm = (props) => {
 
   return (
     <div>
-      {" "}
-      Form
-      {/* <Formik
+      <Formik
         initialValues={{
-          email: "",
-          password: "",
-          rememberMe: "",
+          fullName: props.profile.fullName,
+          lookingForAJob: props.profile.lookingForAJob,
+          lookingForAJobDescription: props.profile.lookingForAJobDescription,
+          aboutMe: props.profile.aboutMe,
+          /* contacts: {},
+          github: "",
+          vk: "",
+          facebook: "",
+          instagram: "",
+          twitter: "",
+          website: "",
+          youtube: "",
+          mainLink: "", */
         }}
         validateOnBlur
-        onSubmit={(values, { setSubmitting, setStatus }) => {
+        onSubmit={(values /* { setSubmitting, setStatus } */) => {
           console.log(values);
-          props.login(
-            values.email,
-            values.password,
-            values.rememberMe,
-            setStatus
+          props.saveProfile(
+            values
+            /* values.fullName,
+            values.lookingForAJob,
+            values.lookingForAJobDescription,
+            values.aboutMe */
+            /*  setStatus */
           );
-          setSubmitting(false);
+          props.setEditMode(false);
+          /* setSubmitting(false); */
         }}
-        validationSchema={validationSchema}
+        /*   validationSchema={validationSchema} */
       >
         {({
           values,
@@ -139,53 +156,69 @@ const ProfileDataForm = (props) => {
           isValid,
           handleSubmit,
           dirty,
-          status,
+          /*  status, */
         }) => (
           <div>
-            {status}
-            <label className={s.post} htmlFor="email">
-              Login
-            </label>
-            <input
-              className={s.input}
-              type={"email"}
-              name={"email"}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            ></input>
-            {touched.email && errors.email && (
-              <p className={s.error}>{errors.email}</p>
-            )}
-            <label className={s.post} htmlFor="password">
-              Password
+            {/*  {status} */}
+            <label className={s.post} htmlFor="fullName">
+              <b>Full Name</b>
             </label>
             <input
               className={s.input}
               type={"text"}
-              name={"password"}
+              name={"fullName"}
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.password}
+              value={values.fullName}
             ></input>
-            {touched.password && errors.password && (
-              <p className={s.error}>{errors.password}</p>
+            {touched.fullName && errors.fullName && (
+              <p className={s.error}>{errors.fullName}</p>
             )}
             <label>
-              <Field type="checkbox" name="rememberMe" />
-              Remember Me
+              <Field type="checkbox" name="lookingForAJob" />
+              <b>LookingForAJob</b>
             </label>
+            <label className={s.post} htmlFor="lookingForAJobDescription">
+              <b>My Professional Skills</b>
+            </label>
+            <textarea
+              className={s.input}
+              type={"text"}
+              name={"lookingForAJobDescription"}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.lookingForAJobDescription}
+            ></textarea>
+            {touched.lookingForAJobDescription &&
+              errors.lookingForAJobDescription && (
+                <p className={s.error}>{errors.lookingForAJobDescription}</p>
+              )}
+            <label className={s.post} htmlFor="aboutMe">
+              <b>About Me</b>
+            </label>
+            <textarea
+              className={s.input}
+              type={"text"}
+              name={"aboutMe"}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.aboutMe}
+            ></textarea>
+            {touched.aboutMe && errors.aboutMe && (
+              <p className={s.error}>{errors.aboutMe}</p>
+            )}
+
             <button
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
               className={s.btn}
               type={"submit"}
             >
-              LogIn
+              Save
             </button>
           </div>
         )}
-      </Formik> */}
+      </Formik>
     </div>
   );
 };

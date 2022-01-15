@@ -10,6 +10,8 @@ const SET_USER_PROFILE = "SET_USER_PROFILE ";
 
 const SET_USER_STATUS = "SET_USER_STATUS";
 
+const SET_PROFILE = "SET_PROFILE";
+
 let initialState = {
   posts: [
     { id: 1, message: "Hi", like: 300 },
@@ -20,7 +22,7 @@ let initialState = {
   /* newPostText: "", */
   profile: null,
   status: "",
-  photos: "",
+  /* photos: "", */
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -51,6 +53,9 @@ const profileReducer = (state = initialState, action) => {
       }; */
 
     case SET_USER_PROFILE:
+      return { ...state, profile: action.profile };
+
+    case SET_PROFILE:
       return { ...state, profile: action.profile };
 
     case SET_USER_STATUS:
@@ -88,6 +93,10 @@ export const setUserStatus = (status) => {
   return { type: SET_USER_STATUS, status };
 };
 
+export const setProfile = (profile) => {
+  return { type: SET_PROFILE, profile };
+};
+
 export const getUserId = (userId) => {
   return (dispatch) => {
     userAPI.getUserId(userId).then((data) => {
@@ -117,6 +126,15 @@ export const savePhoto = (file) => {
     userProfileAPI.savePhoto(file).then((response) => {
       if (response.data.resultCode === 0)
         dispatch(savePhotoSuccess(response.data.data.photos));
+    });
+  };
+};
+
+export const saveProfile = (profile) => {
+  return (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    userProfileAPI.changeProfile(profile).then((response) => {
+      if (response.data.resultCode === 0) dispatch(getUserId(userId));
     });
   };
 };

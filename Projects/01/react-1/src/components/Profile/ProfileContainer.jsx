@@ -5,6 +5,7 @@ import {
   getUserStatus,
   updateStatus,
   savePhoto,
+  saveProfile,
 } from "../../Redux/profile-reducer";
 import { useMatch } from "react-router-dom";
 import Profile from "./Profile";
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component {
           status={this.props.status}
           updateStatus={this.props.updateStatus}
           savePhoto={this.props.savePhoto}
+          saveProfile={this.props.saveProfile}
         />
       </div>
     );
@@ -75,6 +77,7 @@ export default connect(mapStateToProps, {
   getUserStatus,
   updateStatus,
   savePhoto,
+  saveProfile,
 })(ProfileURLMatch);
 
 /* export default compose(

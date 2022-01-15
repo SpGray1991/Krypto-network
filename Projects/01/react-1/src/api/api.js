@@ -59,6 +59,9 @@ export const userProfileAPI = {
     /* .then((response) => {
       return response.data; */
   },
+  changeProfile(profile) {
+    return instance.put(`profile`, profile);
+  },
 };
 
 export const loginAPI = {
