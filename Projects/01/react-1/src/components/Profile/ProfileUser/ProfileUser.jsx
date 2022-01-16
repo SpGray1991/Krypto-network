@@ -54,10 +54,12 @@ const ProfileUser = (props) => {
   );
 };
 
-const Contact = ({ contactTitle }, { contactValue }) => {
+const Contact = (props) => {
+  /* console.log({ contactValue });
+  console.log({ contactTitle }); */
   return (
     <div>
-      <b>{contactTitle}</b> : {contactValue}
+      <b>{props.contactTitle}</b> : {props.contactValue}
     </div>
   );
 };
@@ -87,12 +89,15 @@ const ProfileData = (props) => {
       </p>
       <p>
         <b>Contacts</b> :
-        {Object.keys(props.profile.contacts).map((key) => {
+        {Object.entries(props.profile.contacts).map(([key, value]) => {
+          /* console.log(`${key}`);
+          console.log(`${value}`); */
+
           return (
             <Contact
               key={key}
-              contactTitle={key}
-              contactValue={props.profile.contacts[key]}
+              contactTitle={`${key}`}
+              contactValue={`${value}`}
             />
           );
         })}
@@ -121,15 +126,18 @@ const ProfileDataForm = (props) => {
           lookingForAJob: props.profile.lookingForAJob,
           lookingForAJobDescription: props.profile.lookingForAJobDescription,
           aboutMe: props.profile.aboutMe,
-          /* contacts: {},
-          github: "",
-          vk: "",
-          facebook: "",
-          instagram: "",
-          twitter: "",
-          website: "",
-          youtube: "",
-          mainLink: "", */
+          contacts: {
+            facebook: props.profile.contacts.facebook,
+            website: props.profile.contacts.website,
+            vk: props.profile.contacts.vk,
+            twitter: props.profile.contacts.twitter,
+            instagram: props.profile.contacts.instagram,
+            youtube: props.profile.contacts.youtube,
+            github: props.profile.contacts.github,
+            mainLink: props.profile.contacts.mainLink,
+          },
+
+          /* props.profile.contacts.facebook, */
         }}
         validateOnBlur
         onSubmit={(values /* { setSubmitting, setStatus } */) => {
@@ -207,6 +215,30 @@ const ProfileDataForm = (props) => {
             {touched.aboutMe && errors.aboutMe && (
               <p className={s.error}>{errors.aboutMe}</p>
             )}
+
+            <div>
+              <b>Contacts</b> :
+              {Object.keys(props.profile.contacts).map((key) => {
+                return (
+                  <div>
+                    <label className={s.post} htmlFor={key}>
+                      <b>{key}</b>
+                    </label>
+                    <input
+                      className={s.input}
+                      type={"text"}
+                      name={"contacts." + key}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.contacts[key]}
+                    ></input>
+                    {touched.key && errors.key && (
+                      <p className={s.error}>{errors.key}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
             <button
               disabled={!isValid && !dirty}

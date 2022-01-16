@@ -20,7 +20,7 @@ let initialState = {
     { id: 4, message: "You cool!" },
   ],
   /* newPostText: "", */
-  profile: null,
+  profile: "",
   status: "",
   /* photos: "", */
 };
@@ -132,7 +132,8 @@ export const savePhoto = (file) => {
 
 export const saveProfile = (profile) => {
   return (dispatch, getState) => {
-    const userId = getState().auth.userId;
+    const userId = getState().auth.id;
+    console.log(userId);
     userProfileAPI.changeProfile(profile).then((response) => {
       if (response.data.resultCode === 0) dispatch(getUserId(userId));
     });
