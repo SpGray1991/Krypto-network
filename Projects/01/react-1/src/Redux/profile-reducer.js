@@ -3,6 +3,8 @@ import { userAPI, userProfileAPI } from "../api/api";
 const ADD_POST = "ADD-POST";
 const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
+const SET_PROFILE_UPDATE_STATUS = "SET_PROFILE_UPDATE_STATUS";
+
 /* 
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"; */
 
@@ -22,6 +24,7 @@ let initialState = {
   /* newPostText: "", */
   profile: "",
   status: "",
+  profileUpdateStatus: "",
   /* photos: "", */
 };
 
@@ -51,6 +54,9 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         newPostText: action.newText,
       }; */
+
+    case SET_PROFILE_UPDATE_STATUS:
+      return { ...state, profileUpdateStatus: action.status };
 
     case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
@@ -93,6 +99,10 @@ export const setUserStatus = (status) => {
   return { type: SET_USER_STATUS, status };
 };
 
+export const setProfileUpdateStatus = (status) => {
+  return { type: SET_PROFILE_UPDATE_STATUS, status };
+};
+
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, profile };
 };
@@ -130,12 +140,17 @@ export const savePhoto = (file) => {
   };
 };
 
-export const saveProfile = (profile) => {
+export const saveProfile = (profile, setStatus, goToEditMode) => {
   return (dispatch, getState) => {
     const userId = getState().auth.id;
-    console.log(userId);
     userProfileAPI.changeProfile(profile).then((response) => {
-      if (response.data.resultCode === 0) dispatch(getUserId(userId));
+      if (response.data.resultCode === 0) {
+        dispatch(getUserId(userId));
+        dispatch(setProfileUpdateStatus(true));
+        goToEditMode();
+      } else {
+        setStatus(response.data.messages);
+      }
     });
   };
 };

@@ -53,6 +53,7 @@ class ProfileContainer extends React.Component {
           updateStatus={this.props.updateStatus}
           savePhoto={this.props.savePhoto}
           saveProfile={this.props.saveProfile}
+          profileUpdateStatus={this.props.profileUpdateStatus}
         />
       </div>
     );
@@ -70,6 +71,7 @@ const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
   id: state.auth.id,
+  profileUpdateStatus: state.profilePage.profileUpdateStatus,
 });
 
 export default connect(mapStateToProps, {

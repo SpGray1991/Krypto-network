@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "./ProfileUser.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import usersPhoto from "../../../Img/images.jpg";
@@ -38,6 +38,10 @@ const ProfileUser = (props) => {
           saveProfile={props.saveProfile}
           profile={props.profile}
           setEditMode={setEditMode}
+          profileUpdateStatus={props.profileUpdateStatus}
+          goToEditMode={() => {
+            setEditMode(false);
+          }}
         />
       ) : (
         <ProfileData
@@ -90,9 +94,6 @@ const ProfileData = (props) => {
       <p>
         <b>Contacts</b> :
         {Object.entries(props.profile.contacts).map(([key, value]) => {
-          /* console.log(`${key}`);
-          console.log(`${value}`); */
-
           return (
             <Contact
               key={key}
@@ -136,22 +137,10 @@ const ProfileDataForm = (props) => {
             github: props.profile.contacts.github,
             mainLink: props.profile.contacts.mainLink,
           },
-
-          /* props.profile.contacts.facebook, */
         }}
         validateOnBlur
-        onSubmit={(values /* { setSubmitting, setStatus } */) => {
-          console.log(values);
-          props.saveProfile(
-            values
-            /* values.fullName,
-            values.lookingForAJob,
-            values.lookingForAJobDescription,
-            values.aboutMe */
-            /*  setStatus */
-          );
-          props.setEditMode(false);
-          /* setSubmitting(false); */
+        onSubmit={(values, { setStatus }) => {
+          props.saveProfile(values, setStatus, props.goToEditMode);
         }}
         /*   validationSchema={validationSchema} */
       >
@@ -164,10 +153,10 @@ const ProfileDataForm = (props) => {
           isValid,
           handleSubmit,
           dirty,
-          /*  status, */
+          status,
         }) => (
           <div>
-            {/*  {status} */}
+            {status}
             <label className={s.post} htmlFor="fullName">
               <b>Full Name</b>
             </label>
