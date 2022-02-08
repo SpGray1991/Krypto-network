@@ -1,9 +1,9 @@
 import DialogItem from "./DialogItem/DialogItem";
-import s from "./Dialogs.module.css";
+import style from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { Formik } from "formik";
+import AddMessageForm from "./MessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
   let state = props.dialogPage;
@@ -21,45 +21,14 @@ const Dialogs = (props) => {
   }
 
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialog_items}>{dialogsElements}</div>
-      <div className={s.messages}>
+    <div className={style.dialogs}>
+      <div className={style.messages}>{dialogsElements}</div>
+      <div>
         <div>{messagesElements}</div>
         <div>
           <AddMessageForm addMessage={props.addMessage} />
         </div>
       </div>
-    </div>
-  );
-};
-
-const AddMessageForm = (props) => {
-  return (
-    <div>
-      <Formik
-        initialValues={{ name: "" }}
-        onSubmit={(values) => {
-          props.addMessage(values.name);
-        }}
-      >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
-          <div>
-            <label className={s.post} htmlFor="name">
-              My messages
-            </label>
-            <textarea
-              type={"text"}
-              name={"name"}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.name}
-            ></textarea>
-            <button onClick={handleSubmit} className={s.btn} type={"submit"}>
-              Add messages
-            </button>
-          </div>
-        )}
-      </Formik>
     </div>
   );
 };

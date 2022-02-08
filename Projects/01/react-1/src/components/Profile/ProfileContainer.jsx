@@ -31,10 +31,7 @@ class ProfileContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.match &&
-      this.props.match.params.userId !== prevProps.match.params.userId
-    ) {
+    if (this.props.match !== prevProps.match) {
       this.refreshProfile();
     } else if (!this.props.match && this.props.match !== prevProps.match) {
       this.refreshProfile();
@@ -81,10 +78,3 @@ export default connect(mapStateToProps, {
   savePhoto,
   saveProfile,
 })(ProfileURLMatch);
-
-/* export default compose(
-  connect(mapStateToProps, {
-    getUserId,
-  }),
-  withAuthRedirect
-)(ProfileContainer); */

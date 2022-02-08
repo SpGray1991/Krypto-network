@@ -1,0 +1,15 @@
+.contact {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.fieldProfile {
+  display: block;
+  font-weight: 700;
+  color: blue;
+}
+
+.answer {
+  color: white;
+}

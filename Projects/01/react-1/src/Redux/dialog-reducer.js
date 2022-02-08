@@ -2,21 +2,20 @@ const ADD_MESSAGE = "ADD-MESSAGE";
 
 let initialState = {
   dialogs: [
-    { id: 1, name: "Brother" },
-    { id: 2, name: "Kostya" },
-    { id: 3, name: "Sanya" },
-    { id: 4, name: "Dimon" },
-    { id: 5, name: "Vanya" },
-    { id: 6, name: "Toha" },
-    { id: 7, name: "Kerya" },
+    { id: 1, name: "User1" },
+    { id: 2, name: "User2" },
+    { id: 3, name: "User3" },
+    { id: 4, name: "User4" },
+    { id: 5, name: "User5" },
+    { id: 6, name: "User6" },
+    { id: 7, name: "User7" },
   ],
   messages: [
     { id: 1, message: "Hi" },
     { id: 2, message: "How are you?" },
-    { id: 3, message: "i'm fine!" },
+    { id: 3, message: "I'm fine!" },
     { id: 4, message: "Ok" },
   ],
-  /*  newMessageBody: "", */
 };
 
 const dialogReducer = (state = initialState, action) => {
@@ -29,14 +28,7 @@ const dialogReducer = (state = initialState, action) => {
       return {
         ...state,
         messages: [...state.messages, newMessage],
-        /* newMessageBody: "", */
       };
-
-    /* case UPDATE_NEW_MESSAGE_BODY:
-      return {
-        ...state,
-        newMessageBody: action.newText,
-      }; */
 
     default:
       return state;
@@ -46,9 +38,5 @@ const dialogReducer = (state = initialState, action) => {
 export const addMessage = (name) => {
   return { type: ADD_MESSAGE, name };
 };
-
-/* export const updateNewMessageBody = (text) => {
-  return { type: UPDATE_NEW_MESSAGE_BODY, newText: text };
-}; */
 
 export default dialogReducer;

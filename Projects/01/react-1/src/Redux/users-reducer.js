@@ -9,33 +9,8 @@ const TOGGLE_FETCHING = "TOGGLE_FETCHING";
 const TOGGLE_FOLLOWING_PROGRESS = "TOGGLE_FOLLOWING_PROGRESS";
 
 let initialState = {
-  users: [
-    /*    {
-      id: 1,
-      follow: false,
-      photoUrl: "https://gtavrl.ru/public/a15-krasivaya-muzhskaya-avatarka.jpg",
-      fullName: "Sergey",
-      status: "I am a boss",
-      location: { city: "Zaporizhzhia", country: "Ukraine" },
-    },
-    {
-      id: 2,
-      follow: false,
-      photoUrl: "https://gtavrl.ru/public/poscreenra.jpg",
-      fullName: "Aleksandr",
-      status: "I am the boss brother",
-      location: { city: "Zielona Gura", country: "Poland" },
-    },
-    {
-      id: 3,
-      follow: false,
-      photoUrl: "https://gtavrl.ru/public/fscreenshot-zd.jpg",
-      fullName: "Dimon",
-      status: "I am the boss friend",
-      location: { city: "Zaporizhzhia", country: "Ukraine" },
-    }, */
-  ],
-  pageSize: 100,
+  users: [],
+  pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true,

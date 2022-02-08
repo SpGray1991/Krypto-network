@@ -10,16 +10,8 @@ let mapStateToProps = (state) => {
   };
 };
 
-/* const DialogsContainer = connect(mapStateToProps, {
-  updateNewMessageBody,
-  addMessage,
-})(AuthRedirectComponent);
-
-export default DialogsContainer; */
-
 export default compose(
   connect(mapStateToProps, {
-    /* updateNewMessageBody, */
     addMessage,
   }),
   withAuthRedirect

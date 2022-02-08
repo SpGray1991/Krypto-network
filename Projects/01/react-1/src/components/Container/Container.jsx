@@ -1,11 +1,9 @@
 import React, { Suspense } from "react";
-import s from "../Container/Container.module.css";
+import style from "../Container/Container.module.css";
 import { Routes, Route } from "react-router-dom";
-/* import DialogsContainer from "../Dialogs/DialogsContainer"; */
 import NavbarContainer from "../Navbar/NavbarContainer";
 import UsersContainer from "../Users/UsersContainer";
-/* import ProfileContainer from "../Profile/ProfileContainer"; */
-import LoginPage from "../Login/Login";
+import Login from "../Login/Login";
 import Preloader from "../Common/Preloader/Preloader";
 
 const DialogsContainer = React.lazy(() =>
@@ -17,15 +15,15 @@ const ProfileContainer = React.lazy(() =>
 
 const Container = () => {
   return (
-    <container className={s.container}>
+    <container className={style.container}>
       <NavbarContainer />
-      <content className={s.content}>
+      <content className={style.content}>
         <Suspense fallback={<Preloader />}>
           <Routes>
             <Route path="/profile/*" element={<ProfileContainer />} />
             <Route path="/dialogs/*" element={<DialogsContainer />} />
             <Route path="/users/*" element={<UsersContainer />} />
-            <Route path="/login/*" element={<LoginPage />} />
+            <Route path="/login/*" element={<Login />} />
           </Routes>
         </Suspense>
       </content>

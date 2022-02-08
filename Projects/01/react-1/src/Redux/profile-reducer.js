@@ -5,9 +5,6 @@ const DELETE_POST = "DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 const SET_PROFILE_UPDATE_STATUS = "SET_PROFILE_UPDATE_STATUS";
 
-/* 
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"; */
-
 const SET_USER_PROFILE = "SET_USER_PROFILE ";
 
 const SET_USER_STATUS = "SET_USER_STATUS";
@@ -18,14 +15,12 @@ let initialState = {
   posts: [
     { id: 1, message: "Hi", like: 300 },
     { id: 2, message: "How are you?", like: 350 },
-    { id: 3, message: "i'm fine!" },
-    { id: 4, message: "You cool!" },
+    { id: 3, message: "I'm fine!", like: 250 },
+    { id: 4, message: "You cool!", like: 200 },
   ],
-  /* newPostText: "", */
   profile: "",
   status: "",
   profileUpdateStatus: "",
-  /* photos: "", */
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -48,12 +43,6 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         posts: state.posts.filter((p) => p.id != action.postId),
       };
-
-    /* case UPDATE_NEW_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.newText,
-      }; */
 
     case SET_PROFILE_UPDATE_STATUS:
       return { ...state, profileUpdateStatus: action.status };
@@ -86,10 +75,6 @@ export const deletePost = (postId) => {
 export const savePhotoSuccess = (photos) => {
   return { type: SAVE_PHOTO_SUCCESS, photos };
 };
-
-/* export const updateNewPostTextActionCreator = (text) => {
-  return { type: UPDATE_NEW_POST_TEXT, newText: text };
-}; */
 
 export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile };

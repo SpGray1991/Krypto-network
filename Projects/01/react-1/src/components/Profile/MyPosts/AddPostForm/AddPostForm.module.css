@@ -1,0 +1,39 @@
+.post {
+  display: block;
+
+  color: blanchedalmond;
+  font-size: 30px;
+}
+
+.btn {
+  display: block;
+  width: 120px;
+  height: 40px;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-left: 685px;
+
+  background-color: limegreen;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  color: blanchedalmond;
+  text-align: left;
+  font-size: 12pt;
+}
+
+.fieldText {
+  margin-top: 10px;
+  display: block;
+  width: 800px;
+  height: 80px;
+
+  outline: none;
+  border: none;
+  background-color: thistle;
+
+  font-size: 18pt;
+  text-align: left;
+  color: black;
+}

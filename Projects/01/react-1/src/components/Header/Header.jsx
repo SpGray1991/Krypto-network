@@ -1,20 +1,20 @@
 import { NavLink } from "react-router-dom";
-import s from "./Header.module.css";
+import style from "./Header.module.css";
 
 const Header = (props) => {
   return (
-    <header className={s.header}>
-      <img src="https://www.logo.wine/a/logo/Bitcoin/Bitcoin-Logo.wine.svg"></img>
+    <header className={style.header}>
+      <img src="https://cdn-icons-png.flaticon.com/512/1213/1213973.png"></img>
       <div>
         {props.isAuth ? (
-          <div>
-            {props.login} - <button onClick={props.logout}>Log Out</button>
+          <div className={style.userLogin}>
+            <div className={style.userName}>{props.login}</div>
+            <button className={style.btn} onClick={props.logout}>
+              Exit
+            </button>
           </div>
         ) : (
-          <NavLink
-            to="/login"
-            className={(navData) => (navData.isActive ? s.active : s.item)}
-          >
+          <NavLink to="/login" className={`${style.btn} ${style.login}`}>
             Login
           </NavLink>
         )}

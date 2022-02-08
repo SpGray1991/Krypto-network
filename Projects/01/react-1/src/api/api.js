@@ -45,8 +45,6 @@ export const userProfileAPI = {
   },
   updateStatus(status) {
     return instance.put(`profile/status`, { status: status });
-    /* .then((response) => {
-      return response.data; */
   },
   savePhoto(photoFile) {
     const formData = new FormData();
@@ -56,8 +54,6 @@ export const userProfileAPI = {
         "Content-Type": "multipart\form-data",
       },
     });
-    /* .then((response) => {
-      return response.data; */
   },
   changeProfile(profile) {
     return instance.put(`profile`, profile);
@@ -67,8 +63,6 @@ export const userProfileAPI = {
 export const loginAPI = {
   login(email, password, rememberMe) {
     return instance.post(`auth/login`, { email, password, rememberMe });
-    /* .then((response) => {
-      return response.data; */
   },
   logout() {
     return instance.delete(`auth/login`);

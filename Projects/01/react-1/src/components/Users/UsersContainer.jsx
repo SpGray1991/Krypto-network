@@ -55,13 +55,6 @@ let mapStateToProps = (state) => {
   };
 };
 
-/* export default connect(mapStateToProps, {
-  getUsers,
-  pagesChanged,
-  follow,
-  unfollow,
-})(AuthRedirectComponent); */
-
 export default compose(
   connect(mapStateToProps, {
     getUsers,

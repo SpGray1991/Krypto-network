@@ -1,31 +1,40 @@
-.user {
-  display: flex;
-}
-
-.avatar {
-  display: block;
-  width: 100px;
-  max-width: 100%;
-  height: auto;
-}
-
-.button {
-  display: block;
-}
-
-.page {
-  cursor: pointer;
-}
-
 .paginator {
-  margin: 10px;
+  display: flex;
+  align-items: center;
+
+  height: 35px;
+  margin-bottom: 15px;
 }
 .pageNumber {
-  padding: 2px;
-  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  margin: 5px;
+  padding: 3px;
+
+  border: 2px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+
+  color: white;
 }
 
 .pageNumber.selectedPage {
   font-weight: bold;
-  border-color: black;
+  background-color: black;
+  cursor: pointer;
+}
+
+.btn {
+  display: block;
+  height: 35px;
+  width: 70px;
+
+  border: 2px solid black;
+  border-radius: 30px;
+  background-color: darkslategray;
+  color: white;
+  cursor: pointer;
 }
