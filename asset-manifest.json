@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Krypto-network/static/css/main.06439d26.chunk.css",
+    "main.css": "/Krypto-network/static/css/main.0c931f14.chunk.css",
     "main.js": "/Krypto-network/static/js/main.ccc6067d.chunk.js",
     "main.js.map": "/Krypto-network/static/js/main.ccc6067d.chunk.js.map",
-    "runtime-main.js": "/Krypto-network/static/js/runtime-main.e09664d2.js",
-    "runtime-main.js.map": "/Krypto-network/static/js/runtime-main.e09664d2.js.map",
+    "runtime-main.js": "/Krypto-network/static/js/runtime-main.d4084c7c.js",
+    "runtime-main.js.map": "/Krypto-network/static/js/runtime-main.d4084c7c.js.map",
     "static/js/2.6e7469c2.chunk.js": "/Krypto-network/static/js/2.6e7469c2.chunk.js",
     "static/js/2.6e7469c2.chunk.js.map": "/Krypto-network/static/js/2.6e7469c2.chunk.js.map",
     "static/css/3.9ab8f39e.chunk.css": "/Krypto-network/static/css/3.9ab8f39e.chunk.css",
-    "static/js/3.d6fcb616.chunk.js": "/Krypto-network/static/js/3.d6fcb616.chunk.js",
-    "static/js/3.d6fcb616.chunk.js.map": "/Krypto-network/static/js/3.d6fcb616.chunk.js.map",
+    "static/js/3.1c3d7577.chunk.js": "/Krypto-network/static/js/3.1c3d7577.chunk.js",
+    "static/js/3.1c3d7577.chunk.js.map": "/Krypto-network/static/js/3.1c3d7577.chunk.js.map",
     "static/css/4.fe770459.chunk.css": "/Krypto-network/static/css/4.fe770459.chunk.css",
     "static/js/4.5469059f.chunk.js": "/Krypto-network/static/js/4.5469059f.chunk.js",
     "static/js/4.5469059f.chunk.js.map": "/Krypto-network/static/js/4.5469059f.chunk.js.map",
@@ -18,15 +18,15 @@
     "index.html": "/Krypto-network/index.html",
     "static/css/3.9ab8f39e.chunk.css.map": "/Krypto-network/static/css/3.9ab8f39e.chunk.css.map",
     "static/css/4.fe770459.chunk.css.map": "/Krypto-network/static/css/4.fe770459.chunk.css.map",
-    "static/css/main.06439d26.chunk.css.map": "/Krypto-network/static/css/main.06439d26.chunk.css.map",
+    "static/css/main.0c931f14.chunk.css.map": "/Krypto-network/static/css/main.0c931f14.chunk.css.map",
     "static/js/2.6e7469c2.chunk.js.LICENSE.txt": "/Krypto-network/static/js/2.6e7469c2.chunk.js.LICENSE.txt",
     "static/media/232-wink.dd8f4970.svg": "/Krypto-network/static/media/232-wink.dd8f4970.svg",
     "static/media/loader.2aa5d275.svg": "/Krypto-network/static/media/loader.2aa5d275.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e09664d2.js",
+    "static/js/runtime-main.d4084c7c.js",
     "static/js/2.6e7469c2.chunk.js",
-    "static/css/main.06439d26.chunk.css",
+    "static/css/main.0c931f14.chunk.css",
     "static/js/main.ccc6067d.chunk.js"
   ]
 }
