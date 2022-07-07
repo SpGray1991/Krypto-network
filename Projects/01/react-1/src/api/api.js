@@ -8,6 +8,8 @@ const instance = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
 });
 
+console.log("///////////////////////////////////////");
+
 export const userAPI = {
   getUsers(currentPage, pageSize) {
     return instance
