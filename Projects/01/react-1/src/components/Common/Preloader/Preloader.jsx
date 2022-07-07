@@ -9,4 +9,6 @@ let Preloader = (props) => {
   );
 };
 
+console.log("test test");
+
 export default Preloader;
